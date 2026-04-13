@@ -10,8 +10,89 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 0) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_13_143056) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
+  create_table "activities", force: :cascade do |t|
+    t.decimal "cost", precision: 7, scale: 2
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.bigint "plan_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_activities_on_plan_id"
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "plan_id", null: false
+    t.string "title"
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_chats_on_plan_id"
+  end
+
+  create_table "logements", force: :cascade do |t|
+    t.decimal "cost", precision: 7, scale: 2
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.bigint "plan_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_logements_on_plan_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "chat_id", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.string "role"
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "arrival"
+    t.integer "budget"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.date "date_end"
+    t.date "date_start"
+    t.string "departure"
+    t.integer "nb_peolpe"
+    t.boolean "public"
+    t.string "title"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_plans_on_user_id"
+  end
+
+  create_table "transports", force: :cascade do |t|
+    t.decimal "cost", precision: 7, scale: 2
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.bigint "plan_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_transports_on_plan_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.integer "age"
+    t.datetime "created_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "firstname"
+    t.string "lastname"
+    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at"
+    t.string "reset_password_token"
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "activities", "plans"
+  add_foreign_key "chats", "plans"
+  add_foreign_key "logements", "plans"
+  add_foreign_key "messages", "chats"
+  add_foreign_key "plans", "users"
+  add_foreign_key "transports", "plans"
 end
