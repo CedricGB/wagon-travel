@@ -21,6 +21,15 @@ class PlansController < ApplicationController
     end
   end
 
+  def destroy
+    @plan = Plan.find(params[:id])
+    if @plan.destroy
+      redirect_to plans_path
+    else
+      redirect_to plan_path(@plan)
+    end
+  end
+
   def update
     @plan = Plan.find(params[:id])
     @plan.user = current_user

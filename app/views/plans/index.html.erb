@@ -2,6 +2,6 @@
 
 <ul>
   <% @plans.each do |plan| %>
-    <li><%= plan.title %></li>
+    <li><%= link_to plan.title, plan_path(plan) %></li>
   <% end %>
 </ul>
