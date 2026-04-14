@@ -6,7 +6,7 @@
     <% if user_signed_in? %>
       <div class="hero-buttons">
         <%= link_to "See people's plans", "#", class: "btn btn-light justify-content-start" %>
-        <%= link_to "Add a plan", "#", class: "btn btn-outline-light justify-content-end" %>
+        <%= link_to "Add a plan", "/plans/new", class: "btn btn-outline-light justify-content-end" %>
       </div>
     <% end %>
 
@@ -30,7 +30,7 @@
         <div class="card-body">
           <%= link_to "See all of my plans", "#", class: "btn btn-light w-100 mb-3" %>
           <% (@plans || []).last(3).each do |plan| %>
-            <p><%= plan.name %></p>
+            <p><%= plan.title %></p>
           <% end %>
         </div>
       </div>
