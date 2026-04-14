@@ -1,27 +1,5 @@
-<h1><%= @plan.title %></h1>
-
-<div class="container my-5">
-  <div class="row">
-      <div class="col-md-3">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">@plan.title</h5>
-            <p class="card-text"> t.string "arrival"
-    t.integer "budget"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.date "date_end"
-    t.date "date_start"
-    t.string "departure"
-    t.integer "nb_people"
-    t.boolean "public"
-    t.string "title"</p>
-              <%= link_to "Destroy",
-          plan_path(@plan),
-          data: { turbo_method: :delete,  turbo_confirm: "Are you sure?" },
-          class: "btn btn-outline-danger" %>
-          </div>
-        </div>
-      </div>
-  </div>
+<div class="container text-center my-3">
+  <h1><%= @plan.title %></h1>
 </div>
+
+<%= render "card" %>
