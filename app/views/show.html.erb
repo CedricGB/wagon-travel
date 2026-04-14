@@ -1,0 +1,19 @@
+<h1>Chat avec ton assistant voyage ✈️</h1>
+
+<div>
+  <% @chat.messages.each do |message| %>
+    <p>
+      <strong><%= message.role %>:</strong>
+      <%= message.content %>
+    </p>
+  <% end %>
+</div>
+
+
+
+<h3>Envoyer un message</h3>
+
+<%= simple_form_for [@plan, @message] do |f| %>
+  <%= f.input :content %>
+  <%= f.submit : " Send ! "%>
+<% end %>
