@@ -1,0 +1,17 @@
+<h1><%= @plan.title %></h1>
+
+<div class="container my-5">
+  <div class="row">
+    <% (@plan || []).each do |plan| %>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">plan.name</h5>
+            <p class="card-text">plan.dates</p>
+            <%= link_to "Remove", "#", class: "btn btn-danger btn-sm" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
