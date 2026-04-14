@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-lewagon" style="background-color: #b3ad91;">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
@@ -12,7 +12,7 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <span class="nav-link"><%= current_user.email %></span>
+            <span class="nav-link"><%= link_to current_user.email, "users/edit" %></span>
           </li>
           <li class="nav-item">
             <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
