@@ -17,3 +17,12 @@
 .navbar .nav-link:hover {
   color: white !important;
 }
+
+.nav-link a {
+  text-decoration: none;
+  color: #473D3D;
+
+    &:hover {
+      color: white;
+    }
+}

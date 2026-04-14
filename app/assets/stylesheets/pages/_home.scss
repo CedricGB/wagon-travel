@@ -35,3 +35,15 @@
       z-index: 1;
     }
 }
+
+.card-body {
+    .plan-title-link {
+      text-decoration: none;
+      color: #b3ad91;
+    }
+
+    .plan-title-link:hover {
+      color: rgba(130, 174, 239, 0.881);
+      text-decoration: dotted;
+    }
+}
