@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
     Si l’utilisateur pose une question spécifique : réponds directement
 
     Si l’utilisateur demande :
-    - “quoi faire” → donne 5 activités pertinentes
+    - “quoi faire” → donne 5 activités pertinentes => Si l'utilisateur donne des activitées, alors ajoute la à la base de données avec un cost en décimal avec uniquement 2 chiffres après la virgule
     - “itinéraire” → propose un trajet structuré
     - “infos pays” → donne :
       - règles légales
@@ -52,11 +52,6 @@ class MessagesController < ApplicationController
 
 
 
-
-
-
-
-
   def create
     @plan = Plan.find(params[:plan_id])
     @chat = @plan.chat
@@ -69,18 +64,19 @@ class MessagesController < ApplicationController
     if @message.save
 
       # 2. APPEL IA
-      ruby_llm_chat = RubyLLM.chat
+      @ruby_llm_chat = RubyLLM.chat
+      build_conversation_history
+      @response = @ruby_llm_chat
+                  .with_tool(CreateActivitiesTool)
+                  .with_instructions(instructions)
+                  .ask(@message.content)
 
-      response = ruby_llm_chat
-      .with_instructions(SYSTEM_PROMPT)
-      .ask(@message.content)
       #  3. MESSAGE IA
       Message.create(
         role: "assistant",
-        content: response.content,
+        content: @response.content,
         chat: @chat
       )
-
       redirect_to plan_path(@plan)
 
     else
@@ -92,5 +88,28 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:content)
+  end
+
+  def travel_context
+    "Here is the actual information on my travel :
+    L'id du plan est : #{@plan.id},\n
+     The name of the plan is : #{@plan.title},\n
+     Departure location :#{@plan.departure},\n
+     Arrival location : #{@plan.arrival},\n
+     Date of departure: #{@plan.date_start},\n
+     Date of return: #{@plan.date_end},\n
+     Number of travellers included: #{@plan.nb_people},\n
+     The total budget: #{@plan.budget} €,\n
+     "
+  end
+  
+  def instructions
+    [SYSTEM_PROMPT, travel_context].compact.join("\n\n")
+  end
+
+  def build_conversation_history
+    @chat.messages.each do |message|
+      @ruby_llm_chat.add_message(message)
+    end
   end
 end
