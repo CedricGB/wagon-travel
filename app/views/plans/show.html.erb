@@ -1,5 +1,18 @@
 <div class="container text-center my-3">
   <h1><%= @plan.title %></h1>
 </div>
+  <div class="col-6">
+    <%= render "card" %>
+  </div>
+ <div class="col-6">
+    <h2>Chat</h2>
+      <%= simple_form_for [@plan, @message] do |f| %>
+        <%= f.input :content, required: true, label: "Ask what you want for the travel" %>
+        <%= f.button :submit, 'Create message', class: 'btn btn-primary' %>
+      <% end %>
 
-<%= render "card" %>
+      <% @plan.chat.messages.each do |message|%>
+
+        <p><%= message.content %></p>
+      <% end %>
+</div>
