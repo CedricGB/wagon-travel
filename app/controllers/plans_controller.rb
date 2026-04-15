@@ -5,6 +5,7 @@ class PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
+    @message = Message.new
   end
 
   def new
@@ -19,6 +20,7 @@ class PlansController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+    @plan.chat = Chat.new
   end
 
   def destroy

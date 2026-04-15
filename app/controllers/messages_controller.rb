@@ -103,6 +103,7 @@ class MessagesController < ApplicationController
      "
   end
 
+
   def instructions
     [SYSTEM_PROMPT, travel_context].compact.join("\n\n")
   end
