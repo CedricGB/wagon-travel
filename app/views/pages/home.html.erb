@@ -15,47 +15,35 @@
  <% if user_signed_in? %>
 <div class="container my-5">
   <div class="row">
-    <% @plans.each do |plan| %>
+    <% @plans.last(3).each do |plan| %>
       <div class="col-md-3">
         <div class="card border-0 shadow-sm" style="border-radius: 12px;">
           <div class="card-body p-4">
             <h5 class="mb-4 text-muted" style="font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;">
-              Trips Details
+              <strong><%= plan.title %></strong>
             </h5>
 
             <p class="card-text mb-2">
               <span class="text-muted">Departure</span>
-              <span class="float-end fw-semibold"><%= plan.departure %></span>
+              <span class="float-end fst-italic fw-ligth"><%= plan.departure %></span>
             </p>
             <hr class="my-2">
 
             <p class="card-text mb-2">
               <span class="text-muted">Arrival</span>
-              <span class="float-end fw semibold"><%= plan.arrival %></span>
+              <span class="float-end fst-italic fw-ligth"><%= plan.arrival %></span>
             </p>
             <hr class="my-2">
 
             <p class="card-text mb-2">
               <span class="text-muted">From</span>
-              <span class="float-end fw semibold"><%= plan.date_start %></span>
+              <span class="float-end fst-italic fw-ligth"><%= plan.date_start %></span>
             </p>
             <hr class="my-2">
 
             <p class="card-text mb-2">
               <span class="text-muted">To</span>
-              <span class="float-end fw semibold"><%= plan.date_end %></span>
-            </p>
-            <hr class="my-2">
-
-            <p class="card-text mb-2">
-              <span class="text-muted">People</span>
-              <span class="float-end fw semibold"><%= plan.nb_people %></span>
-            </p>
-            <hr class="my-2">
-
-            <p class="card-text mb-2">
-              <span class="text-muted">Description</span>
-              <span class="float-end fw semibold"><%= plan.content %></span>
+              <span class="float-end fst-italic fw-ligth"><%= plan.date_end %></span>
             </p>
             <hr class="my-2">
 
@@ -70,11 +58,18 @@
       </div>
     <% end %>
     <div class="col-md-3">
-      <div class="card h-100 text-center">
-        <div class="card-body">
-          <%= link_to "See all of my plans", plans_path, class: "btn btn-light w-100 mb-3" %>
-          <% (@plans || []).last(3).each do |plan| %>
-            <p><%= plan.title %></p>
+      <div class="card border-0 shadow-sm" style="border-radius: 12px;">
+        <div class="card-body p-4">
+          <h6 class="text-muted mb-4" style="font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;">
+            My plans
+          </h6>
+          <%= link_to "See all of my plans", plans_path, class: "btn btn-light mb-3" %>
+          <% (@plans || []).last(5).each do |plan| %>
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted"><%= plan.title %></span>
+              <%= link_to "🌍", plan_path(plan), class: "plan-title-link" %>
+            </div>
+            <hr class="my-2">
           <% end %>
         </div>
       </div>
