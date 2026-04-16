@@ -1,0 +1,49 @@
+class ActivitiesController < ApplicationController
+  def show
+    @activity = Activity.find(params[:id])
+  end
+
+  def index
+    @activities = Activity.where(plan_id: params[:id])
+  end
+
+  def new
+    @activity = Activity.new
+    @plan = Plan.find(params[:plan_id])
+  end
+
+  def create
+    @plan = Plan.find(params[:plan_id])
+    @activity = Activity.new(activity_params)
+    @activity.plan = @plan
+
+    if @activity.save
+      redirect_to plan_activity_path(@plan, @activity)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @activity = Activity.find(params[:id])
+    @plan = @activity.plan
+  end
+
+  def update
+    @activity = Activity.find(params[:id])
+    @plan = @activity.plan
+    @activity.update(activity_params)
+
+    redirect_to plan_activity_path(@plan, @activity)
+  end
+
+  def destroy
+    @activity.destroy
+  end
+
+  private
+
+  def activity_params
+    params.require(:activity).permit(:name, :cost)
+  end
+end

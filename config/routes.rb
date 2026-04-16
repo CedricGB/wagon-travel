@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   end
   resources :plans do
     resources :messages, only: [:create]
+    resources :activities, only: [:show, :new, :create, :edit, :update]
   end
 end
