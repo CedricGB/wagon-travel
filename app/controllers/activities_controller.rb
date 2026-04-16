@@ -1,10 +1,12 @@
 class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find(params[:id])
+    @plan = @activity.plan
   end
 
   def index
-    @activities = Activity.where(plan_id: params[:id])
+    @plan = Plan.find(params[:plan_id])
+    @activities = Activity.where(plan_id: params[:plan_id])
   end
 
   def new

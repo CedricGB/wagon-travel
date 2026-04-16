@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   resources :plans do
     resources :messages, only: [:create]
-    resources :activities, only: [:show, :new, :create, :edit, :update]
+    resources :activities, only: [:show, :new, :create, :edit, :update, :index, :destroy]
+    resources :logements, only: [:show, :new, :create, :edit, :update, :index]
   end
 end

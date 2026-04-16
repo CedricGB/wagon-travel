@@ -1,0 +1,9 @@
+<ul>
+<% @activities.each do |activity| %>
+  <%= activity.name %>
+  <%= activity.cost %>
+<% end %>
+<%= link_to "Back to my plan", plan_path(@plan) %>
+</ul>
+
+
