@@ -33,6 +33,7 @@ class MessagesController < ApplicationController
       - téléphone
       - vaccins
 
+
     STYLE :
     - clair
     - structuré
