@@ -24,6 +24,7 @@ class MessagesController < ApplicationController
 
     Si l’utilisateur demande :
     - “quoi faire” → donne 5 activités pertinentes => Si l'utilisateur donne des activitées, alors ajoute la à la base de données avec un cost en décimal avec uniquement 2 chiffres après la virgule
+     - “quoi faire” → donne 5 logements pertinentes => Si l'utilisateur donne des logements, alors ajoute la à la base de données avec un cost en décimal avec uniquement 2 chiffres après la virgule
     - “itinéraire” → propose un trajet structuré
     - “infos pays” → donne :
       - règles légales
@@ -69,6 +70,7 @@ class MessagesController < ApplicationController
       build_conversation_history
       @response = @ruby_llm_chat
                   .with_tool(CreateActivitiesTool)
+                  .with_tool(CreateLogementsTool)
                   .with_instructions(instructions)
                   .ask(@message.content)
 
