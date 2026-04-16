@@ -9,10 +9,12 @@ class PagesController < ApplicationController
   end
 
   def index
-    if user_signed_in?
-      @plans = current_user.plans
-    else
-      @plans = Plan.all
-    end
+    @plans = Plan.where(public: true)
+    
+    # if user_signed_in?
+    #   @plans = current_user.plans
+    # else
+    #   @plans = Plan.where(public: true)
+    # end
   end
 end
