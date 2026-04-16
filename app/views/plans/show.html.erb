@@ -1,18 +1,35 @@
-<div class="container text-center my-3">
-  <h1><%= @plan.title %></h1>
-</div>
-  <div class="col-6">
-    <%= render "plans/card" %>
+<div class="container text-center my-3 d-flex justify-content-between">
+
+
+  <div class="col-5 ">
+    <h1><%= @plan.title %></h1>
+    <%= render "card" %>
   </div>
- <div class="col-6">
+  <div class="col-6 border-0 shadow-sm scrollable-container" style="border-radius: 12px">
     <h2>Chat</h2>
-      <%= simple_form_for [@plan, @message] do |f| %>
-        <%= f.input :content, required: true, label: "Ask what you want for the travel" %>
-        <%= f.button :submit, 'Create message', class: 'btn btn-primary' %>
-      <% end %>
+      <div class="align-content-end m-2">
+        <%= simple_form_for [@plan, @message] do |f|%>
+          <%= f.input :content, required: true, label: "Ask what you want for the travel" %>
+          <%= f.button :submit, 'Create message', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+      <% @plan.chat.messages.order(created_at: :desc).each do |message|%>
+        <% if message.role == "user" %>
+            <div class="d-flex flex-column align-items-end mb-2">
+              <p class="text-end me-3"><em>You</em></p>
+              <div class="bg-white px-3 py-2 rounded-pill">
+                <%= message.content%>
+              </div>
+            </div>
+          <% elsif message.role == "assistant" %>
+            <div class="d-flex justify-content-start mb-5">
+              <div class="px-3 pb-0 pt-3">
+                <p class="text-start"><em>Assistant</em></p>
+                <%= message.content %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+  </div>
 
-      <% @plan.chat.messages.each do |message|%>
-
-        <p><%= message.content %></p>
-      <% end %>
 </div>
