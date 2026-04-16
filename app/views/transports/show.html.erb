@@ -1,0 +1,8 @@
+<%= @transport.name %>
+<%= @transport.cost %>
+<%= link_to "Edit", edit_plan_transport_path %>
+<%= link_to "Remove",
+                plan_transport_path(@plan, @transport),
+                data: { turbo_method: :delete,  turbo_confirm: "Are you sure?" },
+                class: "btn btn-outline-danger btn-sm" %>
+<%= link_to "Back to my plan", plan_path(@plan) %>
