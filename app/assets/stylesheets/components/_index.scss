@@ -17,7 +17,15 @@
   border-radius: 12px;
   background-size: cover;
   background-position: center;
+  background-color: #e8e0d5;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+
+    .index-link {
+      text-decoration: none;
+      color: rgb(219, 124, 7);
+    }
 }
 
 .plan-card-overlay {
