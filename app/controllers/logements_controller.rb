@@ -39,9 +39,17 @@ class LogementsController < ApplicationController
     redirect_to plan_logement_path(@plan, @logement)
   end
 
+  def destroy
+    @logement = Logement.find(params[:id])
+    @plan = @logement.plan
+    if @logement.destroy
+      redirect_to plan_path(@plan)
+    end
+  end
+
   private
 
   def logement_params
-    params.require(:logement).permit(:cost,:name)
+    params.require(:logement).permit(:cost, :name)
   end
 end

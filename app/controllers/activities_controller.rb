@@ -40,7 +40,11 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
-    @activity.destroy
+    @activity = Activity.find(params[:id])
+    @plan = @activity.plan
+    if @activity.destroy
+      redirect_to plan_path(@plan)
+    end
   end
 
   private

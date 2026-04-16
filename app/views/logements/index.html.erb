@@ -1,7 +1,7 @@
 <ul>
   <% @logements.each do |logement| %>
-    <%= logement.name %>
-    <%= logement.cost %>
+    <li><%= link_to logement.name, plan_logement_path(@plan, logement) %></li>
   <% end %>
-  <%= link_to "Back to my plan", plan_path(@plan) %>>
+    <li><%= link_to "Add a logement", new_plan_logement_path(@plan) %></li>
+  <%= link_to "Back to my plan", plan_path(@plan) %>
 </ul>
