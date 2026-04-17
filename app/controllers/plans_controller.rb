@@ -16,11 +16,11 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     @plan.user = current_user
     if @plan.save
+      @plan.chat = Chat.new
       redirect_to plan_path(@plan)
     else
       render :new, status: :unprocessable_entity
     end
-    @plan.chat = Chat.new
   end
 
   def destroy

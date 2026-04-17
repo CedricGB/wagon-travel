@@ -1,10 +1,10 @@
-<div class="container text-center my-3 d-flex justify-content-between">
+<div class="container my-3 d-flex justify-content-between">
 
   <div class="col-5 ">
     <h1><%= @plan.title %></h1>
     <%= render "card" %>
   </div>
-  <div class="col-6 border-0 shadow-sm scrollable-container" style="border-radius: 12px">
+  <div class="col-6 border-0 shadow-sm scrollable-container text-center" style="border-radius: 12px">
     <h2>Chat</h2>
       <div class="align-content-end m-2">
         <%= simple_form_for [@plan, @message] do |f|%>
