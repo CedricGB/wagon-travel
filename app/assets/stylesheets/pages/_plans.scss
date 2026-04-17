@@ -1,0 +1,22 @@
+.plan-container  {
+  display: flex;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chat-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+a.chat-buttons {
+  text-decoration: none;
+}
+
+.chat-form {
+  justify-content: center;
+}

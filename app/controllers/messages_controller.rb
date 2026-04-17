@@ -138,10 +138,18 @@ class MessagesController < ApplicationController
         content: @response.content,
         chat: @chat
       )
-      redirect_to plan_path(@plan)
-
+      respond_to do |format|
+        format.turbo_stream # renders `app/views/messages/create.turbo_stream.erb`
+        format.html { redirect_to plan_path(@plan) }
+      end
     else
-      render "plans/show", status: :unprocessable_entity
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update("new_message_container", partial: "messages/form",
+                                                                            locals: { plan: @plan, message: @message })
+        end
+        format.html { render "plans/show", status: :unprocessable_entity }
+      end
     end
   end
 
@@ -163,7 +171,6 @@ class MessagesController < ApplicationController
      The total budget: #{@plan.budget} €,\n
      "
   end
-
 
   def instructions
     [SYSTEM_PROMPT, travel_context].compact.join("\n\n")

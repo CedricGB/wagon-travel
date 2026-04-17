@@ -1,11 +1,12 @@
 class PlansController < ApplicationController
   def index
-    @plans = Plan.all
+    @plans = Plan.where(user_id: current_user)
   end
 
   def show
     @plan = Plan.find(params[:id])
     @message = Message.new
+    @messages = @plan.chat.messages
   end
 
   def new
@@ -16,11 +17,11 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     @plan.user = current_user
     if @plan.save
+      @plan.chat = Chat.new
       redirect_to plan_path(@plan)
     else
       render :new, status: :unprocessable_entity
     end
-    @plan.chat = Chat.new
   end
 
   def destroy

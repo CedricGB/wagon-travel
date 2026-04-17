@@ -3,3 +3,50 @@
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 24px;
+}
+
+.plan-card {
+  position: relative;
+  height: 200px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  background-color: #e8e0d5;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+
+    .index-link {
+      text-decoration: none;
+      color: rgb(219, 124, 7);
+    }
+}
+
+.plan-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  border-radius: 0 0 12px 12px;
+}
+
+.plan-card-title {
+  color: white;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .plan-grid {
+    grid-template-columns: 1fr;
+  }
+}
