@@ -1,5 +1,16 @@
 .scrollable-container {
-  height: 90vh;
+  height: 40vh;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+#card-title {
+  text-align: center;
+}
+
+.chat-fixed {
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+
 }
