@@ -133,7 +133,7 @@ class MessagesController < ApplicationController
                   .ask(@message.content)
 
       #  3. MESSAGE IA
-      Message.create(
+      @assistant_message = Message.create(
         role: "assistant",
         content: @response.content,
         chat: @chat
