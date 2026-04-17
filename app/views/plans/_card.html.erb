@@ -36,6 +36,11 @@
               <span class="float-end fst-italic fw-light"><%= @plan.nb_people %></span>
             </p>
             <hr class="my-2">
+            <div class="position-absolute bottom-0 start-0 p-3">
+              <%= link_to "Edit",
+                edit_plan_path(@plan),
+                class: "btn btn-outline-warning btn-sm" %>
+            </div>
             <div class="position-absolute bottom-0 end-0 p-3">
               <%= link_to "Remove",
                 plan_path(@plan),
@@ -47,7 +52,7 @@
 
 
         <div class="card border-0 shadow-sm" style="border-radius: 12px;">
-          <div class="card-body p-4">
+          <div class="card-body p-4 position-relative">
             <h5 class="mb-4 text-muted" style="font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;">
               <strong>Activities</strong>
             </h5>
@@ -65,13 +70,22 @@
                 <%= activity.cost %></span>
             </p>
             <hr class="my-2">
+            <%= link_to "Edit",
+                edit_plan_activity_path(@plan, activity),
+                class: "btn btn-outline-warning btn-sm" %>
             <% end %>
+
+            <div class="position-absolute bottom-0 end-0 p-3">
+              <%= link_to "Add",
+                new_plan_activity_path(@plan),
+                class: "btn btn-outline-success btn-sm" %>
+            </div>
           </div>
         </div>
 
 
         <div class="card border-0 shadow-sm" style="border-radius: 12px;">
-          <div class="card-body p-4">
+          <div class="card-body p-4 position-relative">
             <h5 class="mb-4 text-muted" style="font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;">
               <strong>Transportation</strong>
             </h5>
@@ -89,12 +103,20 @@
                 <%= transport.cost %></span>
             </p>
             <hr class="my-2">
+            <%= link_to "Edit",
+                edit_plan_transport_path(@plan, transport),
+                class: "btn btn-outline-warning btn-sm" %>
             <% end %>
+            <div class="position-absolute bottom-0 end-0 p-3">
+              <%= link_to "Add",
+                new_plan_transport_path(@plan),
+                class: "btn btn-outline-success btn-sm" %>
+            </div>
           </div>
         </div>
 
         <div class="card border-0 shadow-sm" style="border-radius: 12px;">
-          <div class="card-body p-4">
+          <div class="card-body p-4 position-relative">
             <h5 class="mb-4 text-muted" style="font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;">
               <strong>Accomodations</strong>
             </h5>
@@ -112,7 +134,15 @@
                 <%= logement.cost %></span>
             </p>
             <hr class="my-2">
+            <%= link_to "Edit",
+                edit_plan_logement_path(@plan, logement),
+                class: "btn btn-outline-warning btn-sm" %>
             <% end %>
+            <div class="position-absolute bottom-0 end-0 p-3">
+              <%= link_to "Add",
+                new_plan_logement_path(@plan),
+                class: "btn btn-outline-success btn-sm" %>
+            </div>
           </div>
         </div>
 

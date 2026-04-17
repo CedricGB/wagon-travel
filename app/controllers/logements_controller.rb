@@ -20,7 +20,7 @@ class LogementsController < ApplicationController
     @plan = Plan.find(params[:plan_id])
     @logement.plan = @plan
     if @logement.save
-      redirect_to plan_logement_path(@plan, @logement)
+      redirect_to plan_path(@plan)
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +36,11 @@ class LogementsController < ApplicationController
     @plan = @logement.plan
     @logement.update(logement_params)
 
-    redirect_to plan_logement_path(@plan, @logement)
+    if @logement.update(logement_params)
+      redirect_to plan_path(@plan)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
