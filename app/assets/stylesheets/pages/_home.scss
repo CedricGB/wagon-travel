@@ -37,6 +37,44 @@
     }
 }
 
+/* HERO BUTTONS */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 85px;
+  margin-top: 20px;
+  z-index: 2;
+}
+
+/* Bouton de base */
+.btn-hero {
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  display: inline-block;
+}
+
+/* Hover */
+.btn-hero:hover {
+  transform: translateY(-2px);
+  background-color: white;
+}
+
+/* Bouton principal */
+.btn-hero-i {
+  background-color: #FF7A00;
+  color: white;
+}
+
+.btn-hero-primary:hover {
+  background-color: #ff8a1a;
+}
+
+/* CARDS */
 .card-body {
     .plan-title-link {
       text-decoration: none;

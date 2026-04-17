@@ -12,19 +12,19 @@
         <%= button_to 'Create my accomodation',
         plan_messages_path(@plan),
         params: {message: {content: "Find my accomodation"}},
-        class:"btn btn-outline-primary w-100 mx-1",
+        class:"btn btn-outline-warning w-100 mx-1",
         data: {turbo_methood: :post}
         %>
         <%= button_to 'Create my activity',
         plan_messages_path(@plan),
         params: {message: {content: "Create an activity for me"}},
-        class:"btn btn-outline-primary w-100 mx-1",
+        class:"btn btn-outline-warning w-100 mx-1",
         data: {turbo_methood: :post}
         %>
         <%= button_to 'Create my transportation',
         plan_messages_path(@plan),
         params: {message: {content: "Create a suitable transportation for this trip"}},
-        class:"btn btn-outline-primary w-100 mx-1",
+        class:"btn btn-outline-warning w-100 mx-1",
         data: {turbo_methood: :post}
         %>
       </div>
