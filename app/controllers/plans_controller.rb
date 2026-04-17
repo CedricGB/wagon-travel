@@ -1,6 +1,6 @@
 class PlansController < ApplicationController
   def index
-    @plans = current_user.plans
+    @plans = Plan.where(user_id: current_user)
   end
 
   def show

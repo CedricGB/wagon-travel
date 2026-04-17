@@ -1,0 +1,7 @@
+<% (@plans || []).last(5).each do |plan| %>
+  <div class="d-flex justify-content-between mb-2">
+    <span class="text-muted"><%= plan.title %></span>
+      <%= link_to "🌍", plan_path(plan), class: "plan-title-link" %>
+    </div>
+  <hr class="my-2">
+<% end %>
