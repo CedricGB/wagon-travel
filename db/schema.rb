@@ -50,6 +50,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_16_192055) do
   end
 
   create_table "plans", force: :cascade do |t|
+    t.text "activities"
     t.string "arrival"
     t.integer "budget"
     t.text "content"
