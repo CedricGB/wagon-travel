@@ -1,7 +1,7 @@
 class Message < ApplicationRecord
   belongs_to :chat
 
-  MAX_USER_MESSAGES = 20
+  MAX_USER_MESSAGES = 999
 
   validates :content, presence: true
   validate :user_message_limit, if: -> { role == "user" }
