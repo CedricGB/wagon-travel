@@ -1,14 +1,14 @@
 <div class="container my-3">
   <div class = "row">
     <div class="col-6 ">
-        <div class="card" >
-          <h1 id = "card-title"><%= @plan.title %></h1>
+        <div class="card" style="background-color: #EA6A0A">
+          <h1 id ="card-title" class="text-center py-5 text-white"><%= @plan.title %></h1>
           <%= render "card" %>
         </div>
     </div>
     <div class="col-5 chat-containerborder-0 p-2 shadow-sm chat-fixed" style="border-radius: 12px"">
 
-      <div class="chat-buttons d-flex justify-content-between mb-3">
+      <div class="chat-buttons d-flex justify-content-between mb-3 mt-3">
         <%= button_to 'Create my accomodation',
         plan_messages_path(@plan),
         params: {message: {content: "Find my accomodation"}},
