@@ -27,10 +27,14 @@ class PlansController < ApplicationController
   def destroy
     @plan = Plan.find(params[:id])
     if @plan.destroy
-      redirect_to plans_path
+      redirect_to root_path
     else
       redirect_to plan_path(@plan)
     end
+  end
+
+  def edit
+    @plan = Plan.find(params[:id])
   end
 
   def update
@@ -47,6 +51,6 @@ class PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:title, :departure, :arrival, :date_start, :date_end, :budget)
+    params.require(:plan).permit(:title, :departure, :arrival, :date_start, :date_end, :budget, :public)
   end
 end

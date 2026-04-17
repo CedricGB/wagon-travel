@@ -20,7 +20,7 @@ class ActivitiesController < ApplicationController
     @activity.plan = @plan
 
     if @activity.save
-      redirect_to plan_activity_path(@plan, @activity)
+      redirect_to plan_path(@plan)
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +36,11 @@ class ActivitiesController < ApplicationController
     @plan = @activity.plan
     @activity.update(activity_params)
 
-    redirect_to plan_activity_path(@plan, @activity)
+    if @activity.update(activity_params)
+      redirect_to plan_path(@plan)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy

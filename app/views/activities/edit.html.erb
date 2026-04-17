@@ -1,5 +1,12 @@
 <%= simple_form_for([@plan, @activity]) do |f| %>
   <%= f.input :name %>
   <%= f.input :cost %>
-  <%= f.submit %>
+
+  <div class="d-flex gap-2">
+    <%= f.submit %>
+    <%= link_to "Remove",
+      plan_activity_path(@plan, @activity),
+      data: { turbo_method: :delete,  turbo_confirm: "Are you sure?" },
+      class: "btn btn-outline-danger btn-sm" %>
+  </div>
 <% end %>
