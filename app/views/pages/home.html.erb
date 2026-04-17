@@ -5,9 +5,8 @@
   </div>
     <% if user_signed_in? %>
       <div class="hero-buttons">
-        <%= link_to "See people's plans", "/pages", class: "btn btn-light justify-content-start" %>
-        <%= link_to "Add a plan", "/plans/new", class: "btn btn-light justify-content-end" %>
-
+        <%= link_to "See people's plans", "/pages", class: "btn-hero" %>
+        <%= link_to "Add a plan", "/plans/new", class: "btn-hero btn-hero-primary" %>
       </div>
     <% end %>
 
