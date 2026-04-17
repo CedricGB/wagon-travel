@@ -20,7 +20,7 @@ class TransportsController < ApplicationController
     @plan = Plan.find(params[:plan_id])
     @transport.plan = @plan
     if @transport.save
-      redirect_to plan_transport_path(@plan, @transport)
+      redirect_to plan_path(@plan)
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +36,11 @@ class TransportsController < ApplicationController
     @plan = @transport.plan
     @transport.update(transport_params)
 
-    redirect_to plan_transport_path(@plan, @transport)
+    if @transport.update(transport_params)
+      redirect_to plan_path(@plan)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy

@@ -1,5 +1,11 @@
 <%= simple_form_for([@plan, @logement]) do |f| %>
   <%= f.input :name%>
   <%= f.input :cost, placeholder: "€" %>
-  <%= f.submit %>
+  <div class="d-flex gap-2">
+    <%= f.submit %>
+    <%= link_to "Remove",
+      plan_logement_path(@plan, @logement),
+      data: { turbo_method: :delete,  turbo_confirm: "Are you sure?" },
+      class: "btn btn-outline-danger btn-sm" %>
+  </div>
 <% end %>
