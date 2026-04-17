@@ -1,7 +1,26 @@
-<h1>Liste de mes plans de voyage</h1>
-
-<ul>
-  <% @plans.each do |plan| %>
-    <li><%= link_to plan.title, plan_path(plan) %></li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="plans-container">
+    <div class="text-center my-2">
+      <h1 class="plans-title">List of my plans</h1>
+    </div>
+  <div class="plans-grid">
+    <% @plans.each do |plan| %>
+      <%= link_to plan_path(plan), class: "plan-card" do %>
+        <div style="display: flex; justify-content: space-between; padding: 12px;">
+          <div class="index-link" style="justify-content-start">
+            <h6 class="justify-content-start">Departure:</h6>
+              <span> From: <%= plan.departure %> <h6>on <%= plan.date_start %></h6></span>
+          </div>
+          <div class="index-link" style="justify-content-end;">
+            <h6 class="justify-content-end">Arrival:</h6>
+              <span> To: <%= plan.arrival %> <h6>on <%= plan.date_end %></h6></span>
+          </div>
+        </div>
+        <div class="plan-card-overlay">
+          <h5 class="plan-card-title"><%= plan.title %></h5>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  </div>
+</div>

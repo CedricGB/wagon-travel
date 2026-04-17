@@ -9,40 +9,33 @@
 
             <p class="card-text mb-2">
               <span class="text-muted">Departure</span>
-              <span class="float-end fst-italic fw-ligth"><%= @plan.departure %></span>
+              <span class="float-end fst-italic fw-light"><%= @plan.departure %></span>
             </p>
             <hr class="my-2">
 
             <p class="card-text mb-2">
               <span class="text-muted">Arrival</span>
-              <span class="float-end fst-italic fw-ligth"><%= @plan.arrival %></span>
+              <span class="float-end fst-italic fw-light"><%= @plan.arrival %></span>
             </p>
             <hr class="my-2">
 
             <p class="card-text mb-2">
               <span class="text-muted">From</span>
-              <span class="float-end fst-italic fw-ligth"><%= @plan.date_start %></span>
+              <span class="float-end fst-italic fw-light"><%= @plan.date_start %></span>
             </p>
             <hr class="my-2">
 
             <p class="card-text mb-2">
               <span class="text-muted">To</span>
-              <span class="float-end fst-italic fw-ligth"><%= @plan.date_end %></span>
+              <span class="float-end fst-italic fw-light"><%= @plan.date_end %></span>
             </p>
             <hr class="my-2">
 
             <p class="card-text mb-2">
               <span class="text-muted">People</span>
-              <span class="float-end fst-italic fw-ligth"><%= @plan.nb_people %></span>
+              <span class="float-end fst-italic fw-light"><%= @plan.nb_people %></span>
             </p>
             <hr class="my-2">
-
-            <p class="card-text mb-2">
-              <span class="text-muted">Description</span>
-              <span class="float-end fst-italic fw-ligth"><%= @plan.content %></span>
-            </p>
-            <hr class="my-2">
-
             <div class="position-absolute bottom-0 end-0 p-3">
               <%= link_to "Remove",
                 plan_path(@plan),
@@ -51,6 +44,78 @@
             </div>
           </div>
         </div>
+
+
+        <div class="card border-0 shadow-sm" style="border-radius: 12px;">
+          <div class="card-body p-4">
+            <h5 class="mb-4 text-muted" style="font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;">
+              <strong>Activities</strong>
+            </h5>
+            <% @plan.activities.each do |activity| %>
+            <p class="card-text mb-2 d-flex justify-content-between align-items-start gap-2">
+              <span class="text-muted text-nowrap">Type</span>
+              <span class="float-end fst-italic fw-light text-end" style="word-break: break-word;">
+                <%= activity.name %>
+              </span>
+            </p>
+
+            <p class="card-text mb-2 d-flex justify-content-between align-items-start gap-2">
+              <span class="text-muted text-nowrap">Price</span>
+              <span class="float-end fst-italic fw-light text-end" style="word-break: break-word;">
+                <%= activity.cost %></span>
+            </p>
+            <hr class="my-2">
+            <% end %>
+          </div>
+        </div>
+
+
+        <div class="card border-0 shadow-sm" style="border-radius: 12px;">
+          <div class="card-body p-4">
+            <h5 class="mb-4 text-muted" style="font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;">
+              <strong>Transportation</strong>
+            </h5>
+            <% @plan.transports.each do |transport| %>
+            <p class="card-text mb-2 d-flex justify-content-between align-items-start gap-2">
+              <span class="text-muted text-nowrap">Type</span>
+              <span class="float-end fst-italic fw-light text-end" style="word-break: break-word;">
+                <%= transport.name %>
+              </span>
+            </p>
+
+            <p class="card-text mb-2 d-flex justify-content-between align-items-start gap-2">
+              <span class="text-muted">Price</span>
+              <span class="float-end fst-italic fw-light text-end" style="word-break: break-word;">
+                <%= transport.cost %></span>
+            </p>
+            <hr class="my-2">
+            <% end %>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm" style="border-radius: 12px;">
+          <div class="card-body p-4">
+            <h5 class="mb-4 text-muted" style="font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;">
+              <strong>Accomodations</strong>
+            </h5>
+            <% @plan.logements.each do |logement| %>
+            <p class="card-text mb-2 d-flex justify-content-between align-items-start gap-2">
+              <span class="text-muted text-nowrap">Type</span>
+              <span class="float-end fst-italic fw-light text-end" style="word-break: break-word;">
+                <%= logement.name %>
+              </span>
+            </p>
+
+            <p class="card-text mb-2 d-flex justify-content-between align-items-start gap-2">
+              <span class="text-muted text-nowrap">Price</span>
+              <span class="float-end fst-italic fw-light text-end" style="word-break: break-word;">
+                <%= logement.cost %></span>
+            </p>
+            <hr class="my-2">
+            <% end %>
+          </div>
+        </div>
+
       </div>
   </div>
 </div>
