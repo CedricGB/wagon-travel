@@ -1,0 +1,5 @@
+<%= simple_form_for([@plan, @transport]) do |f| %>
+  <%= f.input :name%>
+  <%= f.input :cost, placeholder: "€" %>
+  <%= f.submit %>
+<% end %>

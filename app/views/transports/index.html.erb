@@ -1,0 +1,7 @@
+<ul>
+  <% @transports.each do |transport| %>
+    <li><%= link_to transport.name, plan_transport_path(@plan, transport) %></li>
+  <% end %>
+  <li><%= link_to "Add a transport", new_plan_transport_path(@plan) %></li>
+  <%= link_to "Back to my plan", plan_path(@plan) %>
+</ul>
