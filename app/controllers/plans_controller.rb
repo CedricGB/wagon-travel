@@ -6,6 +6,7 @@ class PlansController < ApplicationController
   def show
     @plan = Plan.find(params[:id])
     @message = Message.new
+    @messages = @plan.chat.messages
   end
 
   def new
