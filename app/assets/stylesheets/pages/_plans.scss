@@ -1,22 +1,50 @@
-.plan-container  {
+.plan-container {
   display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.plan-card-area {
+  flex: 1;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .chat-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 16px;
 }
 
 .chat-buttons {
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
 }
 
-a.chat-buttons {
-  text-decoration: none;
+.chat-buttons .btn {
+  border-radius: 10px !important;
+  font-size: 14px;
+  padding: 10px;
+  flex: 1;
+}
+
+#messages_container {
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 10px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .chat-form {
-  justify-content: center;
+  display: flex;
+  gap: 10px;
+}
+
+h2 {
+  font-size: 18px;
+  margin-top: 10px;
 }
